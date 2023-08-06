@@ -110,7 +110,7 @@ Make sure to update your region and account number above
 **Step 4:** Sample S3 files generation to the input bucket
 
 
-* `$ echo "{\"productId\":"1" , \"productName\": \"some Name\", \"productVersion\": \"v1"}" >> "product_1.txt"`
+* `$ echo "{\"productId\":"1" , \"productName\": \"some Name\", \"productVersion\": \"v1\"}" >> "product_1.txt"`
 * `$ aws s3 --region $REGION cp "product_1.txt" my-stepfunction-ecs-app-dev-source-bucket-<YOUR_ACCOUNTNUMBER>`
 
 
