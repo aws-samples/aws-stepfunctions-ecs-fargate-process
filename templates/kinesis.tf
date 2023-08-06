@@ -20,13 +20,13 @@ resource "aws_kinesis_stream" "stepfunction_ecs_kinesis_stream" {
 
 resource "aws_kinesis_firehose_delivery_stream" "stepfunction_ecs_kinesis_firehosedelivery_stream" {
   name        = "${var.app_prefix}-firehose-delivery-stream"
-  destination = "s3"
+  destination = "extended_s3"
 
   kinesis_source_configuration {
     role_arn   = "${aws_iam_role.ecs_firehose_delivery_role.arn}"
     kinesis_stream_arn = "${aws_kinesis_stream.stepfunction_ecs_kinesis_stream.arn}"
   }
-  s3_configuration {
+  extended_s3_configuration {
     role_arn   = "${aws_iam_role.ecs_firehose_delivery_role.arn}"
     bucket_arn = "${aws_s3_bucket.stepfunction_ecs_target_s3bucket.arn}"
     cloudwatch_logging_options {
